@@ -600,8 +600,8 @@ pre code {
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px;
+  /* margin-right: -15px;
+  margin-left: -15px; */
 }
 
 .no-gutters {
@@ -1691,6 +1691,10 @@ pre code {
 .table-sm th,
 .table-sm td {
   padding: 0.3rem;
+}
+
+.table-sm {
+  font-size: 12px;
 }
 
 .table-bordered {
@@ -10741,6 +10745,9 @@ body {
   }
   .sidebar .nav-item.dropdown .dropdown-toggle::after {
     display: block;
+    top: 1rem;
+    position: absolute;
+    right: 0;
   }
   .sidebar.toggled {
     overflow: visible;
@@ -10777,10 +10784,10 @@ body {
 .card-body-icon {
   position: absolute;
   z-index: 0;
-  top: -1.25rem;
-  right: -1rem;
+  top: 10px;
+  right: 5px;
   opacity: 0.4;
-  font-size: 5rem;
+  font-size: 4rem;
   -webkit-transform: rotate(15deg);
   transform: rotate(15deg);
 }
@@ -10841,7 +10848,7 @@ body {
   margin-bottom: 0;
   /* Override default `<label>` margin */
   line-height: 1.5;
-  color: #495057;
+  color: #7e7e7e;
   border: 1px solid transparent;
   border-radius: 0.25rem;
   -webkit-transition: all 0.1s ease-in-out;

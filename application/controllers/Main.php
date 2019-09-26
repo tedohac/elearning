@@ -17,6 +17,13 @@
         public function index()
         {
             $data = array();
-            $this->load->view("index", $data);
+            $role = $this->session->userdata('user_role');
+            
+            if($role=="adm")
+                $this->load->view("index_adm", $data);
+            elseif($role=="mhs")
+                $this->load->view("index_mhs", $data);
+            elseif($role=="dsn")
+                $this->load->view("index_dsn", $data);
         }
     }

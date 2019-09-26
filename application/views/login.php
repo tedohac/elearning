@@ -17,7 +17,7 @@
   
 
     <div class="card card-login mx-auto mt-5">
-      <div class="card-header">Login to App Center</div>
+      <div class="card-header">Login to Elearning</div>
       <div class="card-body">
 
         <?php if ($this->session->flashdata('error')): ?>
@@ -38,7 +38,7 @@
           </div>
           <div class="form-group">
             <div class="form-label-group">
-              <input type="password" id="passWord" name="user_pass" class="form-control" placeholder="Password" required="required">
+              <input type="password" id="passWord" name="user_password" class="form-control" placeholder="Password" required="required">
               <label for="passWord">Password</label>
             </div>
           </div>

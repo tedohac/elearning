@@ -16,16 +16,20 @@
             $this->form_validation->set_rules($this->users_model->rules());
             //------------------------------
             // $salt = bin2hex(openssl_random_pseudo_bytes(22));
-            // $hash = crypt("polman", $salt);
-            // echo "polman : ".$hash;
+            // $hash = crypt("mercu", $salt);
+            // echo $hash;
             //------------------------------
 
             if ($this->form_validation->run()) {
-                if($this->users_model->otentikasi()){
+                if($this->users_model->otentikasi())
+                {
                     $post = $this->input->post();
 
+                    $role = $this->users_model->getrole($post["user_name"]);
+
                     $data_session = array(
-                        'user_name' => $post["user_name"]
+                        'user_name' => $post["user_name"],
+                        'user_role' => $role
                     );
                     
                     $this->session->set_userdata($data_session);
