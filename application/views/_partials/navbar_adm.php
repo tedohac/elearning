@@ -6,7 +6,7 @@
   </button>
 
   <a href="<?= site_url() ?>">
-    <img class="float-left" src="<?= base_url('assets/index.png') ?>" /><h3 class="text-white float-left m-1">App Center</h3>
+    <h3 class="text-white float-left m-1">E-Learning - <small><i>Administrator</i></small></h3>
   </a>
 
 
