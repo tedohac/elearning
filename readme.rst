@@ -4,6 +4,7 @@ Project E-Learning Web Enterprise UMB 2019
 
 **TOLONG JANGAN LANGSUNG PUSH KE MASTER**
 Cara pasang project:
+
 1. Install & configure git
 2. Buat folder baru
 3. ketik ```git init```
