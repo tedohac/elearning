@@ -18,7 +18,6 @@
         <?php $this->load->view("_partials/sidebar_adm.php") ?>
 
         <div id="content-wrapper">
-        <form method="get">
 
             <div class="container-fluid">
                 <!-- Breadcrumbs-->
@@ -74,7 +73,11 @@
                                         <td><?= $data->pkl_hari ?></td>
                                         <td><?= $data->pkl_mulai ?></td>
                                         <td><?= $data->pkl_selesai ?></td>
-                                        <td></td>
+                                        <td>
+                                            
+                                            <a class="trash-button btn btn-danger p-1 float-right ml-1" data-toggle="modal" data-target="#hapusModal" href="#" onclick="$('#delid').val('<?= $data->pkl_id ?>');"><i class="fas fa-trash-alt"></i></a>
+                                            <a class="btn btn-info p-1 float-right" href="<?= site_url('masterperkuliahan/edit/'.$data->pkl_id) ?>"><i class="fas fa-file-signature"></i></a>
+                                        </td>
                                     </tr>
                                     <?php
                                         $nomor++;
@@ -90,7 +93,38 @@
 
             </div>
             
-        </form>
+
+            <!-- Modal -->
+            <div class="modal fade" id="hapusModal">
+                <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                    <h4 class="modal-title">Hapus Perkuliahan</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        Apakah anda yakin akan menghapus perkuliahan terpilih?
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        
+                        <form action="<?= site_url('masterperkuliahan/delete/') ?>" method="post">
+                            <input type="hidden" name="delid" id="delid">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+                            <input type="submit" class="btn btn-primary" value="Ya">
+                        </form>
+                    </div>
+
+                </div>
+                </div>
+            </div>
+
+
         </div>
         <!-- /.content-wrapper -->
 

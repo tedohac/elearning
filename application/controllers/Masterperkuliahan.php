@@ -45,4 +45,53 @@ class Masterperkuliahan extends CI_Controller
         
         $this->load->view("master/perkuliahan_add");
     }
+    
+    public function edit($id = null)
+    {
+        if (!isset($id)) redirect(site_url('masterperkuliahan'));
+    
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules($this->perkuliahans_model->rules());
+
+        if ($this->form_validation->run()) {
+
+            if($this->perkuliahans_model->update($id))
+            {
+                $this->session->set_flashdata('success', 'Perkuliahan berhasil diubah');
+                redirect(site_url('masterperkuliahan'));
+                return;
+            }
+            else
+            {
+                $this->session->set_flashdata('error', 'Perkuliahan gagal diubah');
+                redirect(site_url('masterperkuliahan'));
+                return;
+    
+            }
+        }
+
+        $data["datas"] = $this->perkuliahans_model->getById($id);
+        if (!$data["datas"]) show_404();
+        
+        $this->load->view("master/perkuliahan_edit", $data);
+    }
+
+    public function delete()
+    {
+        $post = $this->input->post();
+
+        if($this->perkuliahans_model->delete($post['delid']))
+        {
+            $this->session->set_flashdata('success', 'Perkuliahan berhasil dihapus');
+            redirect(site_url('masterperkuliahan'));
+            return;
+        }
+        else
+        {
+            $this->session->set_flashdata('error', 'Perkuliahan gagal dihapus');
+            redirect(site_url('masterperkuliahan'));
+            return;
+
+        }
+    }
 }

@@ -49,4 +49,32 @@
 
             return ($this->db->affected_rows() > 0) ? true : false;
         }
+
+        public function getById($id)
+        {
+            $this->db->from("ms_perkuliahan pkl join ms_matkul m on(pkl.pkl_matkul_id=m.matkul_id) join ms_dosen d on(pkl.pkl_dosen_nik=d.dosen_nik)");
+            $this->db->where(["pkl_id" => $id]);
+            return $this->db->get()->row();
+        }
+        
+        public function update($id)
+        {
+            $post = $this->input->post();
+            $this->pkl_matkul_id = $post["pkl_matkul_id"];
+            $this->pkl_dosen_nik = $post["pkl_dosen_nik"];
+            $this->pkl_hari = $post["pkl_hari"];
+            $this->pkl_ruang = $post["pkl_ruang"];
+            $this->pkl_mulai = $post["pkl_mulai"];
+            $this->pkl_selesai = $post["pkl_selesai"];
+            $this->db->update($this->_table, $this, array('pkl_id' => $id));
+
+            return ($this->db->affected_rows() > 0) ? true : false;
+        }
+
+        public function delete($id)
+        {
+            $this->db->delete($this->_table, array("pkl_id" => $id));
+            
+            return ($this->db->affected_rows() > 0) ? true : false;
+        }
     }
