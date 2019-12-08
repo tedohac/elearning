@@ -29,4 +29,10 @@
                     <span>Master Perkuliahan</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?= site_url('mastermatkul') ?>">
+                    <i class="fas fa-fw fa-file-archive"></i>
+                    <span>Master Matakuliah</span>
+                </a>
+            </li>
         </ul>
