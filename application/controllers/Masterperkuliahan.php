@@ -94,4 +94,14 @@ class Masterperkuliahan extends CI_Controller
 
         }
     }
+
+    function autocom()
+    {
+        $json = [];
+
+        if(!empty($this->input->get("q"))){
+            $json = $this->perkuliahans_model->autocom($this->input->get("q"));
+        }
+        echo json_encode($json);
+    }
 }
