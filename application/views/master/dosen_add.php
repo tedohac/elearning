@@ -54,37 +54,36 @@
                             <div class="col-lg-6 col-md-12 mb-6 px-1 my-2">
                                 <small>NIK Dosen</small>
                                 <input type="text" name="dosen_nik" id="dosen_nik" class="form-control shadow-sm">
+                                <div class="small text-danger">
+                                    <?= form_error('dosen_nik') ?>
+                                </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-lg-6 col-md-12 mb-6 px-1 my-2">
-                                <small>Username</small>
-                                <input type="text" name="dosen_user_name" id="dosen_user_name" class="form-control shadow-sm">
-                            </div>
-                        </div>
-                        <!-- <div class="row">
-                            <div class="col-lg-6 col-md-12 mb-6 px-1 my-2">
-                                <small>User Role</small>
-                                <select class="userRoleAutocom form-control shadow-sm" name="dosen_user_role">
-                                </select>
-                            </div>
-                        </div> -->
                         <div class="row">
                             <div class="col-lg-6 col-md-12 mb-6 px-1 my-2">
                                 <small>Password</small>
                                 <input type="password" name="dosen_password" id="dosen_password" class="form-control shadow-sm">
+                                <div class="small text-danger">
+                                    <?= form_error('dosen_password') ?>
+                                </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-6 col-md-12 mb-6 px-1 my-2">
                                 <small>Re-type Password</small>
                                 <input type="password" name="repassword" id="repassword" class="form-control shadow-sm">
+                                <div class="small text-danger">
+                                    <?= form_error('repassword') ?>
+                                </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-6 col-md-12 mb-6 px-1 my-2">
                                 <small>Nama Dosen</small>
                                 <input type="text" name="dosen_nama" id="dosen_nama" class="form-control shadow-sm">
+                                <div class="small text-danger">
+                                    <?= form_error('dosen_nama') ?>
+                                </div>
                             </div>
                         </div>
                         <div class="row">

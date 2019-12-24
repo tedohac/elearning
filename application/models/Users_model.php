@@ -49,15 +49,32 @@
             return $this->db->select("user_role")->where("user_name", $user_name)->get($this->_table)->row()->user_role;
         }
 
-        function addDosen() 
+        function checkusername($user_name)
+        {
+            return $this->db->where("user_name", $user_name)->count_all_results($this->_table);
+        }
+
+        function add($role)
         {
             $data = $this->input->post();
-            $post_user['user_name'] = $data['dosen_user_name'];
+            $post_user['user_name'] = $data['user_name'];
             $post_user['user_password'] = ($data['dosen_password']);
-            // $post_user['user_role'] = $data['dosen_user_role'];
+            $post_user['user_role'] = $role;
             $post_user['user_status'] = "1";
             $this->db->insert($this->_table, $post_user);
 
-            return true;
+            return $this->db->affected_rows();
+        }
+
+        function addDosen($role)
+        {
+            $data = $this->input->post();
+            $post_user['user_name'] = $data['dosen_nik'];
+            $post_user['user_password'] = ($data['dosen_password']);
+            $post_user['user_role'] = $role;
+            $post_user['user_status'] = "1";
+            $this->db->insert($this->_table, $post_user);
+
+            return $this->db->affected_rows();
         }
     }

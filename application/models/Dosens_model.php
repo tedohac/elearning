@@ -11,29 +11,17 @@
         {
             return [
                 ['field' => 'dosen_nik',
-                'label' => 'dosen_nik',
+                'label' => 'NIK',
                 'rules' => 'required'],
-                ['field' => 'dosen_user_name',
-                'label' => 'dosen_user_name',
+                ['field' => 'dosen_password',
+                'label' => 'Password',
                 'rules' => 'required'],
+                ['field' => 'repassword',
+                'label' => 'Re-Password',
+                'rules' => 'required|matches[dosen_password]'],
                 ['field' => 'dosen_nama',
-                'label' => 'dosen_nama',
+                'label' => 'Nama Dosen',
                 'rules' => 'required'],
-                ['field' => 'dosen_tempat_lahir',
-                'label' => 'dosen_tempat_lahir',
-                'rules' => 'required'],
-                ['field' => 'dosen_tanggal_lahir',
-                'label' => 'dosen_tanggal_lahir',
-                'rules' => 'required'],
-                ['field' => 'dosen_no_hp',
-                'label' => 'dosen_no_hp',
-                'rules' => 'required'],
-                ['field' => 'dosen_jenis_kelamin',
-                'label' => 'dosen_jenis_kelamin',
-                'rules' => 'required'],
-                ['field' => 'dosen_alamat',
-                'label' => 'dosen_alamat',
-                'rules' => 'required']
             ];
         }
 
@@ -51,12 +39,12 @@
             return $this->db->get()->result();
         }
 
-        public function save()
+        public function add()
         {
             $post = $this->input->post();
 
             $this->dosen_nik = $post["dosen_nik"];
-            $this->dosen_user_name = $post["dosen_user_name"];
+            $this->dosen_user_name = $post["dosen_nik"];
             $this->dosen_nama = $post["dosen_nama"];
             $this->dosen_tempat_lahir = $post["dosen_tempat_lahir"];
             $this->dosen_tanggal_lahir = $post["dosen_tanggal_lahir"];
@@ -65,7 +53,7 @@
             $this->dosen_alamat = $post["dosen_alamat"];
             $this->db->insert($this->_table, $this);
 
-            return ($this->db->affected_rows() > 0) ? true : false;
+            return $this->db->affected_rows();
         }
 
         public function getById($id)
@@ -96,5 +84,10 @@
             $this->db->delete($this->_table, array("dosen_nik" => $id));
             
             return ($this->db->affected_rows() > 0) ? true : false;
+        }
+
+        function checknik($dosen_nik)
+        {
+            return $this->db->where("dosen_nik", $dosen_nik)->count_all_results($this->_table);
         }
     }

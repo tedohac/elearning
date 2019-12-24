@@ -27,20 +27,39 @@ class Masterdosen extends CI_Controller
         $this->load->library('form_validation');
         $this->form_validation->set_rules($this->dosens_model->rules());
 
-        if ($this->form_validation->run()) {
+        if ($this->form_validation->run()) 
+        {
             
-            if($_POST['dosen_password'] == $_POST['repassword']) {
-                if($this->users_model->addDosen())
+            $post = $this->input->post();
+            
+            if($this->users_model->checkusername($post["dosen_nik"])) 
+            {
+                $this->session->set_flashdata('error', 'NIK sudah digunakan sebagai username!');
+                redirect(site_url('masterdosen/add'));
+                return;
+            }
+            elseif($this->dosens_model->checknik($post["dosen_nik"])) 
+            {
+                $this->session->set_flashdata('error', 'NIK sudah digunakan!');
+                redirect(site_url('masterdosen/add'));
+                return;
+            }
+            elseif($_POST['dosen_password'] != $_POST['repassword']) 
+            {
+                $this->session->set_flashdata('error', 'Password & Re-Password tidak sama!');
+                redirect(site_url('masterdosen/add'));
+                return;
+            }
+            else
+            {
+                if(!$this->users_model->addDosen("dsn"))
                 {
-                    $this->session->set_flashdata('success', 'Dosen baru berhasil ditambahkan sebagai user baru');
-                }
-                else{
                     $this->session->set_flashdata('error', 'Dosen baru gagal ditambahkan sebagai user baru');
                     redirect(site_url('masterdosen'));
                     return;
                 }
                 
-                if($this->dosens_model->save())
+                if($this->dosens_model->add())
                 {
                     $this->session->set_flashdata('success', 'Dosen baru berhasil ditambahkan');
                     redirect(site_url('masterdosen'));
@@ -51,10 +70,6 @@ class Masterdosen extends CI_Controller
                     redirect(site_url('masterdosen'));
                     return;
                 }
-            } else {
-                $this->session->set_flashdata('error', 'Password & Re-Password tidak sama!');
-                redirect(site_url('masterdosen'));
-                return;
             }
             
         }
