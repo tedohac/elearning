@@ -14,11 +14,117 @@ class Masterdosen extends CI_Controller
             return;
         }
     }
+
+    public function index()
+    {
+        $params['datas'] = $this->dosens_model->getall();
+        
+        $this->load->view("master/dosen", $params);
+    }
+
+    function add()
+    {
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules($this->dosens_model->rules());
+
+        if ($this->form_validation->run()) {
+            
+            if($_POST['dosen_password'] == $_POST['repassword']) {
+                if($this->users_model->addDosen())
+                {
+                    $this->session->set_flashdata('success', 'Dosen baru berhasil ditambahkan sebagai user baru');
+                }
+                else{
+                    $this->session->set_flashdata('error', 'Dosen baru gagal ditambahkan sebagai user baru');
+                    redirect(site_url('masterdosen'));
+                    return;
+                }
+                
+                if($this->dosens_model->save())
+                {
+                    $this->session->set_flashdata('success', 'Dosen baru berhasil ditambahkan');
+                    redirect(site_url('masterdosen'));
+                    return;
+                }
+                else{
+                    $this->session->set_flashdata('error', 'Dosen baru gagal ditambahkan');
+                    redirect(site_url('masterdosen'));
+                    return;
+                }
+            } else {
+                $this->session->set_flashdata('error', 'Password & Re-Password tidak sama!');
+                redirect(site_url('masterdosen'));
+                return;
+            }
+            
+        }
+        
+        $this->load->view("master/dosen_add");
+    }
+
+    public function edit($id = null)
+    {
+        if (!isset($id)) redirect(site_url('masterdosen'));
+    
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules($this->dosens_model->rules());
+
+        if ($this->form_validation->run()) {
+
+            if($this->dosens_model->update($id))
+            {
+                $this->session->set_flashdata('success', 'Dosen berhasil diubah');
+                redirect(site_url('masterdosen'));
+                return;
+            }
+            else
+            {
+                $this->session->set_flashdata('error', 'Dosen gagal diubah');
+                redirect(site_url('masterdosen'));
+                return;
+    
+            }
+        }
+
+        $data["datas"] = $this->dosens_model->getById($id);
+        if (!$data["datas"]) show_404();
+        
+        $this->load->view("master/dosen_edit", $data);
+    }
+
+    public function delete()
+    {
+        $post = $this->input->post();
+
+        if($this->dosens_model->delete($post['delid']))
+        {
+            $this->session->set_flashdata('success', 'Dosen berhasil dihapus');
+            redirect(site_url('masterdosen'));
+            return;
+        }
+        else
+        {
+            $this->session->set_flashdata('error', 'Dosen gagal dihapus');
+            redirect(site_url('masterdosen'));
+            return;
+
+        }
+    }
+
+    function jkautocom()
+    {
+        $json = [];
+
+        if(!empty($this->input->get("q"))){
+            $json = $this->dosens_model->autocom($this->input->get("q"));
+        }
+        echo json_encode($json);
+    }
     
     function autocom()
     {
         $json = [];
-
+        
         if(!empty($this->input->get("q"))){
             $json = $this->dosens_model->autocom($this->input->get("q"));
         }

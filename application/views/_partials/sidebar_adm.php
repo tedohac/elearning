@@ -10,7 +10,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="<?= site_url('masterdosen') ?>">
                     <i class="fas fa-fw fa-chalkboard-teacher"></i>
                     <span>Master Dosen</span>
                 </a>
