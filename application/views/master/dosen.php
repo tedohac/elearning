@@ -66,18 +66,11 @@
                                     <tr>
                                         <td><?= $nomor ?></td>
                                         <td><?= $data->dosen_nik ?></td>
-                                        <td><?= $data->dosen_user_name ?></td>
                                         <td><?= $data->dosen_nama ?></td>
-                                        <!-- <td>
-                                            <a href="<?php echo site_url('masterdosen/update'.$data->dosen_nik) ?>"
-                                            class="btn btn-small"><i class="fas fa-edit"></i> Edit</a>
-                                            <a onClick="deleteConfirm('<?php echo site_url('masterdosen/delete'.$data->dosen_nik) ?>')"
-                                            href="#!" class="btn btn-small text-danger"><i class="fas fa-trash"></i>Hapus</a>
-                                        </td> -->
+                                        <td><?= $data->dosen_user_name ?></td>
                                         <td>
-                                            
-                                            <a class="btn btn-small text-danger" data-toggle="modal" data-target="#hapusModal" href="#" onclick="$('#delid').val('<?= $data->dosen_nik ?>');"><i class="fas fa-trash"></i></a>
-                                            <a class="btn btn-small" href="<?= site_url('masterdosen/edit/'.$data->dosen_nik) ?>"><i class="fas fa-edit"></i></a>
+                                            <!-- <a class="btn btn-small text-danger" data-toggle="modal" data-target="#hapusModal" href="#" onclick="$('#delid').val('<?= $data->dosen_nik ?>');"><i class="fas fa-trash"></i></a>
+                                            <a class="btn btn-small" href="<?= site_url('masterdosen/edit/'.$data->dosen_nik) ?>"><i class="fas fa-edit"></i></a> -->
                                         </td>
                                     </tr>
                                     <?php

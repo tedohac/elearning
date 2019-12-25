@@ -14,18 +14,8 @@ class Mastermatkul extends CI_Controller
             return;
         }
     }
-    
-    function autocom()
-    {
-        $json = [];
 
-        if(!empty($this->input->get("q"))){
-            $json = $this->matkuls_model->autocom($this->input->get("q"));
-        }
-        echo json_encode($json);
-    }
-
-       public function index()
+    public function index()
     {
         $params['datas'] = $this->matkuls_model->getall();
         
@@ -36,10 +26,18 @@ class Mastermatkul extends CI_Controller
     {
         $this->load->library('form_validation');
         $this->form_validation->set_rules($this->matkuls_model->rules());
+        $post = $this->input->post();
 
-        if ($this->form_validation->run()) {
+        if ($this->form_validation->run())
+        {
             
-            if($this->matkuls_model->save())
+            if($this->matkuls_model->checkid($post["matkul_id"])) 
+            {
+                $this->session->set_flashdata('error', 'ID mata kuliah sudah digunakan!');
+                redirect(site_url('mastermatkul/add'));
+                return;
+            }    
+            elseif($this->matkuls_model->save())
             {
                 $this->session->set_flashdata('success', 'matakuliah baru berhasil ditambahkan');
                 redirect(site_url('mastermatkul'));

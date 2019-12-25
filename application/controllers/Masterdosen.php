@@ -31,16 +31,16 @@ class Masterdosen extends CI_Controller
         {
             
             $post = $this->input->post();
-            
-            if($this->users_model->checkusername($post["dosen_nik"])) 
+
+            if($this->dosens_model->checknik($post["dosen_nik"])) 
             {
-                $this->session->set_flashdata('error', 'NIK sudah digunakan sebagai username!');
+                $this->session->set_flashdata('error', 'NIK sudah digunakan!');
                 redirect(site_url('masterdosen/add'));
                 return;
             }
-            elseif($this->dosens_model->checknik($post["dosen_nik"])) 
+            elseif($this->users_model->checkusername($post["dosen_nik"])) 
             {
-                $this->session->set_flashdata('error', 'NIK sudah digunakan!');
+                $this->session->set_flashdata('error', 'NIK sudah digunakan sebagai username!');
                 redirect(site_url('masterdosen/add'));
                 return;
             }
@@ -124,25 +124,5 @@ class Masterdosen extends CI_Controller
             return;
 
         }
-    }
-
-    function jkautocom()
-    {
-        $json = [];
-
-        if(!empty($this->input->get("q"))){
-            $json = $this->dosens_model->autocom($this->input->get("q"));
-        }
-        echo json_encode($json);
-    }
-    
-    function autocom()
-    {
-        $json = [];
-        
-        if(!empty($this->input->get("q"))){
-            $json = $this->dosens_model->autocom($this->input->get("q"));
-        }
-        echo json_encode($json);
     }
 }

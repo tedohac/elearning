@@ -56,12 +56,18 @@
                                     <div class="col-lg-6 col-md-12 mb-6 px-1 my-2">
                                         <small>ID Matakuliah</small>
                                         <input type="text" name="matkul_id" id="matkul_id" class="form-control shadow-sm">
+                                        <div class="small text-danger">
+                                            <?= form_error('matkul_id') ?>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-6 col-md-12 mb-6 px-1 my-2">
                                         <small>Nama Matakuliah</small>
                                         <input type="text" name="matkul_nama" id="matkul_nama" class="form-control shadow-sm">
+                                        <div class="small text-danger">
+                                            <?= form_error('matkul_nama') ?>
+                                        </div>
                                     </div>
                                 </div>
                          <div class="row">

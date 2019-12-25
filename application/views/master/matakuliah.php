@@ -67,8 +67,8 @@
                                         <td><?= $data->matkul_nama ?></td>
                                         <td>
                                             
-                                            <a class="trash-button btn btn-danger p-1 float-right ml-1" data-toggle="modal" data-target="#hapusModal" href="#" onclick="$('#delid').val('<?= $data->matkul_id ?>');"><i class="fas fa-trash-alt"></i></a>
-                                            <a class="btn btn-info p-1 float-right" href="<?= site_url('mastermatkul/edit/'.$data->matkul_id) ?>"><i class="fas fa-file-signature"></i></a>
+                                            <!-- <a class="trash-button btn btn-danger p-1 float-right ml-1" data-toggle="modal" data-target="#hapusModal" href="#" onclick="$('#delid').val('<?= $data->matkul_id ?>');"><i class="fas fa-trash-alt"></i></a>
+                                            <a class="btn btn-info p-1 float-right" href="<?= site_url('mastermatkul/edit/'.$data->matkul_id) ?>"><i class="fas fa-file-signature"></i></a> -->
                                         </td>
                                     </tr>
                                     <?php

@@ -14,14 +14,14 @@
             return $query->result();
         }
 
-               public function rules()
+        public function rules()
         {
             return [
                 ['field' => 'matkul_id',
-                'label' => 'matkul_id',
+                'label' => 'ID Matakuliah',
                 'rules' => 'required'],
                 ['field' => 'matkul_nama',
-                'label' => 'matkul_nama',
+                'label' => 'Nama Matakuliah',
                 'rules' => 'required'],
             ];
         }
@@ -64,5 +64,10 @@
             $this->db->delete($this->_table, array("matkul_id" => $id));
             
             return ($this->db->affected_rows() > 0) ? true : false;
+        }
+
+        function checkid($matkul_id)
+        {
+            return $this->db->where("matkul_id", $matkul_id)->count_all_results($this->_table);
         }
     }

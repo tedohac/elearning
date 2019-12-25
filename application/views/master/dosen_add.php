@@ -195,21 +195,6 @@
         $(".userRoleAutocom").select2({
             data: data1
         })
-        
-        $('.dosenAutocom').select2({
-            placeholder: '-- Select Dosen --',
-            ajax: {
-            url: '<?= site_url() ?>masterdosen/autocom',
-            dataType: 'json',
-            delay: 250,
-            processResults: function (data) {
-                return {
-                results: data
-                };
-            },
-            cache: true
-            }
-        });
     </script>
     
     <!-- Timepicker -->
