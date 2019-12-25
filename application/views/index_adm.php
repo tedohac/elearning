@@ -39,7 +39,7 @@
                                         </div>
                                         <div>Master Dosen</div>
                                     </div>
-                                    <a class="card-footer text-white clearfix small z-1" href="#">
+                                    <a class="card-footer text-white clearfix small z-1" href="<?= site_url('masterdosen') ?>">
                                         <span class="float-left">Go to Page</span>
                                         <span class="float-right">
                                         <i class="fas fa-angle-right"></i>
@@ -56,7 +56,24 @@
                                         </div>
                                         <div>Master Mahasiswa</div>
                                     </div>
-                                    <a class="card-footer text-white clearfix small z-1" href="#">
+                                    <a class="card-footer text-white clearfix small z-1" href="<?= site_url('mastermahasiswa') ?>">
+                                        <span class="float-left">Go to Page</span>
+                                        <span class="float-right">
+                                        <i class="fas fa-angle-right"></i>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-3 col-sm-6 mb-3">
+                                <div class="card text-white bg-info o-hidden h-100 shadow">
+                                    <div class="card-body">
+                                        <div class="card-body-icon">
+                                        <i class="fas fa-fw fa-book-reader"></i>
+                                        </div>
+                                        <div>Master Mata Kuliah</div>
+                                    </div>
+                                    <a class="card-footer text-white clearfix small z-1" href="<?= site_url('mastermatkul') ?>">
                                         <span class="float-left">Go to Page</span>
                                         <span class="float-right">
                                         <i class="fas fa-angle-right"></i>
@@ -69,7 +86,7 @@
                                 <div class="card text-white bg-info o-hidden h-100 shadow">
                                     <div class="card-body">
                                         <div class="card-body-icon">
-                                        <i class="fas fa-fw fa-file-archive"></i>
+                                        <i class="fas fa-fw fa-address-card"></i>
                                         </div>
                                         <div>Master Perkuliahan</div>
                                     </div>
@@ -86,24 +103,7 @@
                                 <div class="card text-white bg-info o-hidden h-100 shadow">
                                     <div class="card-body">
                                         <div class="card-body-icon">
-                                        <i class="fas fa-fw fa-file-archive"></i>
-                                        </div>
-                                        <div>Master Matakuliah</div>
-                                    </div>
-                                    <a class="card-footer text-white clearfix small z-1" href="<?= site_url('mastermatkul') ?>">
-                                        <span class="float-left">Go to Page</span>
-                                        <span class="float-right">
-                                        <i class="fas fa-angle-right"></i>
-                                        </span>
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div class="col-xl-3 col-sm-6 mb-3">
-                                <div class="card text-white bg-info o-hidden h-100 shadow">
-                                    <div class="card-body">
-                                        <div class="card-body-icon">
-                                        <i class="fas fa-fw fa-file-archive"></i>
+                                        <i class="fas fa-fw fa-calendar-alt"></i>
                                         </div>
                                         <div>Master Penjadwalan</div>
                                     </div>

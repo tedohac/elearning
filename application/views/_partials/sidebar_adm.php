@@ -22,24 +22,22 @@
                     <span>Master Mahasiswa</span>
                 </a>
             </li>
-
             <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fas fa-fw fa-chalkboard-teacher"></i>
+                <a class="nav-link" href="<?= site_url('mastermatkul') ?>">
+                    <i class="fas fa-fw fa-book-reader"></i>
                     <span>Master Mata Kuliah</span>
                 </a>
             </li>
-            
             <li class="nav-item">
                 <a class="nav-link" href="<?= site_url('masterperkuliahan') ?>">
-                    <i class="fas fa-fw fa-file-archive"></i>
+                    <i class="fas fa-fw fa-address-card"></i>
                     <span>Master Perkuliahan</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?= site_url('mastermatkul') ?>">
-                    <i class="fas fa-fw fa-file-archive"></i>
-                    <span>Master Matakuliah</span>
+                <a class="nav-link" href="<?= site_url('masterpenjadwalan') ?>">
+                    <i class="fas fa-fw fa-calendar-alt"></i>
+                    <span>Master Penjadwalan</span>
                 </a>
             </li>
         </ul>
