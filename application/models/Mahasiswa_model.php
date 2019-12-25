@@ -8,7 +8,7 @@ class Mahasiswa_model extends CI_Model
 
     function autocom($keyword) {        
         $this->db->like("mhs_nama", $keyword);
-        $query = $this->db->select("mhs_id as id, mhs_nama as text")
+        $query = $this->db->select("mhs_nim as id, mhs_nama as text")
         ->limit(10)
         ->get($this->_table);
         return $query->result();

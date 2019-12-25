@@ -64,16 +64,20 @@
                                     <?= form_error('pjd_pkl_id') ?>
                                 </div>
                             </div>
-                            
+
                             <div class="col-lg-3 col-md-6 mb-3 px-1">
-                                <small>Mahasiswa *</small>
-                                <select class="mahasiswaAutocom form-control shadow-sm" name="pjd_mhs_nim">
-                                <?php if (isset($datas->pjd_mhs_nim)): ?>
-                                    <option value="<?= $datas->pkl_dosen_nik ?>" selected><?= $datas->pjd_mhs_nim ?></option>
-                                <?php endif; ?>
-                                </select>
+                                <small>Tanggal Mulai</small>
+                                <input type="date" name="pjd_tglmulai" id="pjd_tglmulai" class="form-control shadow-sm"  placeholder="" value="<?= $datas->pjd_tglmulai?>">
                                 <div class="small text-danger">
-                                    <?= form_error('pjd_mhs_nim') ?>
+                                    <?= form_error('pjd_tglmulai') ?>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-6 mb-3 px-1">
+                                <small>Tanggal Selesai</small>
+                                <input type="date" name="pjd_tglselesai" id="pjd_tglselesai" class="form-control shadow-sm"  placeholder="" value="<?= $datas->pjd_tglselesai ?>">
+                                <div class="small text-danger">
+                                    <?= form_error('pjd_tglselesai') ?>
                                 </div>
                             </div>
                             
@@ -95,7 +99,7 @@
 
                                     <!-- Modal body -->
                                     <div class="modal-body">
-                                        Apakah anda yakin akan mengubah perkuliahan ini?
+                                        Apakah anda yakin akan mengubah penjadwalan ini?
                                     </div>
 
                                     <!-- Modal footer -->
@@ -149,7 +153,7 @@
             }
         });
         
-        $('.mahasiswaAutocom').select2({
+        /*$('.mahasiswaAutocom').select2({
             placeholder: '-- Select NIM --',
             ajax: {
             url: '<?= site_url() ?>mastermahasiswa/autocom',
@@ -162,7 +166,7 @@
             },
             cache: true
             }
-        });
+        });*/
     </script>
     
     <!-- Timepicker -->

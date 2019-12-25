@@ -61,17 +61,17 @@
                                     <?= form_error('pjd_pkl_id') ?>
                                 </div>
                             </div>
-                            
-                            <div class="col-lg-3 col-md-6 mb-3 px-1">
-                                <small>Mahasiswa *</small>
-                                <select class="mahasiswaAutocom form-control shadow-sm" name="pjd_mhs_nim">
-                                </select>
-                                <div class="small text-danger">
-                                    <?= form_error('pjd_mhs_nim') ?>
-                                </div>
+
+                            <div class="col-lg-3 col-md-6 mb-6 px-1">
+                                <small>Tanggal Mulai</small>
+                                <input type="date" name="pjd_tglmulai" id="pjd_tglmulai" class="form-control shadow-sm">
+                            </div>
+
+                            <div class="col-lg-3 col-md-6 mb-6 px-1">
+                                <small>Tanggal Selesai</small>
+                                <input type="date" name="pjd_tglselesai" id="pjd_tglselesai" class="form-control shadow-sm">
                             </div>
                             
-                           
                             <div class="col-12">
                                 <input type="button" class="btn btn-primary btn-block h-100" value="Simpan" data-toggle="modal" data-target="#emailModal">
                             </div>
@@ -144,8 +144,8 @@
             }
         });
         
-        $('.mahasiswaAutocom').select2({
-            placeholder: '-- Select Dosen --',
+        /*$('.mahasiswaAutocom').select2({
+            placeholder: '-- Select Nama Mahasiswa --',
             ajax: {
             url: '<?= site_url() ?>mastermahasiswa/autocom',
             dataType: 'json',
@@ -157,7 +157,7 @@
             },
             cache: true
             }
-        });
+        });*/
         
     </script>
     
