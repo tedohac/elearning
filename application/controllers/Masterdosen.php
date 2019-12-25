@@ -32,7 +32,7 @@ class Masterdosen extends CI_Controller
             
             $post = $this->input->post();
 
-            if($this->dosens_model->checknik($post["dosen_nik"])) 
+            if($this->dosens_model->checknik($post["dosen_nik"]))
             {
                 $this->session->set_flashdata('error', 'NIK sudah digunakan!');
                 redirect(site_url('masterdosen/add'));
@@ -44,15 +44,9 @@ class Masterdosen extends CI_Controller
                 redirect(site_url('masterdosen/add'));
                 return;
             }
-            elseif($_POST['dosen_password'] != $_POST['repassword']) 
-            {
-                $this->session->set_flashdata('error', 'Password & Re-Password tidak sama!');
-                redirect(site_url('masterdosen/add'));
-                return;
-            }
             else
             {
-                if(!$this->users_model->addDosen("dsn"))
+                if(!$this->users_model->add($post["dosen_nik"], "dsn"))
                 {
                     $this->session->set_flashdata('error', 'Dosen baru gagal ditambahkan sebagai user baru');
                     redirect(site_url('masterdosen'));

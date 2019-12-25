@@ -56,32 +56,36 @@
                                     <div class="col-lg-6 col-md-12 mb-6 px-1 my-2">
                                         <small>NIM</small>
                                         <input type="text" name="mhs_nim" id="mhs_nim" class="form-control shadow-sm">
-                                    </div>
-                                </div>
-                                <div class="row">                              
-                                    <div class="col-lg-6 col-md-12 mb-6 px-1 my-2">
-                                        
-                                        <small>User Role</small>
-                                        <label type="text" name="mhs_role" id="mhs_role" class="form-control shadow-sm" >Mahasiswa</label>
-                                    
+                                        <div class="small text-danger">
+                                            <?= form_error('mhs_nim') ?>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-6 col-md-12 mb-6 px-1 my-2">
                                         <small>Password</small>
                                         <input type="password" name="mhs_password" id="mhs_password" class="form-control shadow-sm">
+                                        <div class="small text-danger">
+                                            <?= form_error('mhs_password') ?>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-6 col-md-12 mb-6 px-1 my-2">
                                         <small>Re-Password</small>
-                                        <input type="password" name="mhs_repassword" id="mhs_repassword" class="form-control shadow-sm">
+                                        <input type="password" name="repassword" id="repassword" class="form-control shadow-sm">
+                                        <div class="small text-danger">
+                                            <?= form_error('repassword') ?>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-6 col-md-12 mb-6 px-1 my-2">
                                         <small>Nama Mahasiswa</small>
                                         <input type="text" name="mhs_nama" id="mhs_nama" class="form-control shadow-sm">
+                                        <div class="small text-danger">
+                                            <?= form_error('mhs_nama') ?>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">

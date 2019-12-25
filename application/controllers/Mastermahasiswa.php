@@ -7,7 +7,7 @@ class Mastermahasiswa extends CI_Controller
     {
         parent::__construct();
         $this->load->model("users_model");
-        $this->load->model("mahasiswas_model");
+        $this->load->model("mahasiswa_model");
         
         if($this->session->userdata('user_name')==null && $this->session->userdata('user_role')!="adm"){
             redirect(site_url('login'));
@@ -23,44 +23,49 @@ class Mastermahasiswa extends CI_Controller
 
     public function add()
     {
-        $this->load->model('mahasiswa_model');
         $this->load->library('form_validation');
         $this->form_validation->set_rules($this->mahasiswa_model->rules());
 
-        if ($this->form_validation->run()) {
+        if ($this->form_validation->run()) 
+        {
 
-            if($_POST['mhs_password'] == $_POST['mhs_repassword']){
+            $post = $this->input->post();
 
-            if($this->users_model->addMahasiswa())
+            
+            if($this->mahasiswa_model->checknim($post["mhs_nim"]))
             {
-                $this->session->set_flashdata('success', 'Mahasiswa baru berhasil ditambahkan sebagai user baru');
-                // redirect(site_url('mastermahasiswa'));
-                // return;
+                $this->session->set_flashdata('error', 'NIM sudah digunakan!');
+                redirect(site_url('mastermahasiswa/add'));
+                return;
             }
-            else{
-                $this->session->set_flashdata('error', 'Mahasiswa baru gagal ditambahkan sebagai user baru');
-                // redirect(site_url('mastermahasiswa'));
-                // return;
-
+            elseif($this->users_model->checkusername($post["mhs_nim"])) 
+            {
+                $this->session->set_flashdata('error', 'NIM sudah digunakan sebagai username!');
+                redirect(site_url('mastermahasiswa/add'));
+                return;
+            }
+            else
+            {
+                if(!$this->users_model->add($post["mhs_nim"], "dsn"))
+                {
+                    $this->session->set_flashdata('error', 'Mahasiswa baru gagal ditambahkan sebagai user baru');
+                    redirect(site_url('mastermahasiswa'));
+                    return;
+                }
+                
+                if($this->mahasiswa_model->add())
+                {
+                    $this->session->set_flashdata('success', 'Mahasiswa baru berhasil ditambahkan');
+                    redirect(site_url('mastermahasiswa'));
+                    return;
+                }
+                else{
+                    $this->session->set_flashdata('error', 'Mahasiswa baru gagal ditambahkan');
+                    redirect(site_url('mastermahasiswa'));
+                    return;
+                }
             }
             
-            if($this->mahasiswa_model->save())
-            {
-                $this->session->set_flashdata('success', 'mahasiswa baru berhasil ditambahkan');
-                redirect(site_url('mastermahasiswa'));
-                return;
-            }
-            else{
-                $this->session->set_flashdata('error', 'mahasiswa baru gagal ditambahkan');
-                redirect(site_url('mastermahasiswa'));
-                return;
-
-            }
-        } else {
-            $this->session->set_flashdata('error', 'Password dan RePassword Tidak Sama');
-            redirect(site_url('mastermahasiswa'));
-            return;
-        }
         }
         
         $this->load->view("master/mahasiswa_add");
