@@ -50,7 +50,7 @@
                             <table class="table table-striped table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                                 <thead class="thead-dark">
                                 <tr>
-                                    <th width="20">#</th>
+                                    <th width="20">No</th>
                                     <th>Matkul</th>
                                     <th>Dosen</th>
                                     <th>Ruang</th>
