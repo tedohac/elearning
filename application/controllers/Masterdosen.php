@@ -119,4 +119,14 @@ class Masterdosen extends CI_Controller
 
         }
     }
+    
+    function autocom()
+    {
+        $json = [];
+
+        if(!empty($this->input->get("q"))){
+            $json = $this->dosens_model->autocom($this->input->get("q"));
+        }
+        echo json_encode($json);
+    }
 }

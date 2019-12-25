@@ -5,7 +5,15 @@
     {
         
         private $_table = "ms_dosen";
-        private $_userTable = "ms_user";
+
+        function autocom($keyword) 
+        {        
+            $this->db->like("dosen_nama", $keyword);
+            $query = $this->db->select("dosen_nik as id, dosen_nama as text")
+                        ->limit(10)
+                        ->get($this->_table);
+            return $query->result();
+        }
 
         public function rules()
         {
