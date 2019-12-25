@@ -19,15 +19,18 @@
                 ['field' => 'pjd_pkl_id',
                 'label' => 'ID Perkuliahan',
                 'rules' => 'required'],
-                ['field' => 'pjd_mhs_nim',
-                'label' => 'NIM',
+                ['field' => 'pjd_tglmulai',
+                'label' => 'Tanggal Mulai',
+                'rules' => 'required'],
+                ['field' => 'pjd_tglselesai',
+                'label' => 'Tanggal Selesai',
                 'rules' => 'required']
             ];
         }
 
         public function getall()
         {
-            $this->db->from("ms_penjadwalan pjd join ms_perkuliahan pkl on(pjd.pjd_pkl_id=pkl.pkl_id) join ms_mahasiswa m on(pjd.pjd_mhs_nim=m.mhs_nim)");
+            $this->db->from("ms_penjadwalan pjd join ms_perkuliahan pkl on(pjd.pjd_pkl_id=pkl.pkl_id)");
             return $this->db->get()->result();
         }
             
@@ -35,7 +38,8 @@
         {
             $post = $this->input->post();
             $this->pjd_pkl_id = $post["pjd_pkl_id"];
-            $this->pjd_mhs_nim = $post["pjd_mhs_nim"];
+            $this->pjd_tglmulai = $post["pjd_tglmulai"];
+            $this->pjd_tglselesai = $post["pjd_tglselesai"];
             $this->db->insert($this->_table, $this);
 
             return ($this->db->affected_rows() > 0) ? true : false;
@@ -43,7 +47,7 @@
 
         public function getById($id)
         {
-            $this->db->from("ms_penjadwalan pjd join ms_perkuliahan pkl on(pjd.pjd_pkl_id=pkl.pkl_id) join ms_mahasiswa mhs on(pjd.pjd_mhs_nim=mhs.mhs_nim)");
+            $this->db->from("ms_penjadwalan pjd join ms_perkuliahan pkl on(pjd.pjd_pkl_id=pkl.pkl_id)");
             $this->db->where(["pjd_id" => $id]);
             return $this->db->get()->row();
         }
@@ -52,7 +56,8 @@
         {
             $post = $this->input->post();
             $this->pjd_pkl_id = $post["pjd_pkl_id"];
-            $this->pjd_mhs_nim = $post["pjd_mhs_nim"];
+            $this->pjd_tglmulai = $post["pjd_tglmulai"];
+            $this->pjd_tglselesai = $post["pjd_tglselesai"];
             $this->db->update($this->_table, $this, array('pjd_id' => $id));
 
             return ($this->db->affected_rows() > 0) ? true : false;

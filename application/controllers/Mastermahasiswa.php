@@ -71,7 +71,7 @@ class Mastermahasiswa extends CI_Controller
         $this->load->view("master/mahasiswa_add");
     }
 
-    function jkautocom()
+    function autocom()
     {
         $json = [];
 
