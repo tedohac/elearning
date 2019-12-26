@@ -126,7 +126,6 @@ class Mastermahasiswa extends CI_Controller
             $this->session->set_flashdata('error', 'mahasiswa gagal dihapus');
             redirect(site_url('mastermahasiswa'));
             return;
-
         }
     }
 }

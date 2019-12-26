@@ -6,13 +6,13 @@
   </button>
 
   <a href="<?= site_url() ?>">
-    <h3 class="text-white float-left m-1">E-Learning - <small><i>Dosen</i></small></h3>
+    <h3 class="text-white float-left m-1">E-Learning - <small><i>Mahasiswa</i></small></h3>
   </a>
 
 
   <!-- Navbar Search -->
   <div class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0 text-white">
-    Welcome, <?= $nik ?>!
+    Welcome, <?= $nim ?>!
   </div>
 
   <!-- Navbar -->

@@ -33,6 +33,15 @@
             ];
         }
 
+        public function rules_modul()
+        {
+            return [
+                ['field' => 'pjd_modulurl',
+                'label' => 'Modul',
+                'rules' => 'trim|xss_clean'],
+            ];
+        }
+
         public function getall()
         {
             $this->db->from("ms_penjadwalan pjd join ms_perkuliahan pkl on(pjd.pjd_pkl_id=pkl.pkl_id)");
@@ -95,6 +104,15 @@
         {
             $this->pjd_forumcontent = $data["pjd_forumcontent"];
             $this->pjd_forumcreated = $data["pjd_forumcreated"];
+            $this->db->update($this->_table, $this, array('pjd_id' => $data['pjd_id']));
+
+            return ($this->db->affected_rows() > 0) ? true : false;
+        }
+        
+        public function updatemodul($data)
+        {
+            $this->pjd_modulurl = $data["pjd_modulurl"];
+            $this->pjd_modulcreated = $data["pjd_modulcreated"];
             $this->db->update($this->_table, $this, array('pjd_id' => $data['pjd_id']));
 
             return ($this->db->affected_rows() > 0) ? true : false;

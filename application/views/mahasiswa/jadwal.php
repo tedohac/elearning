@@ -6,16 +6,16 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Penjadwalan</title>
+    <title>Jadwal</title>
     <?php $this->load->view("_partials/head.php") ?>
 </head>
 
 <body id="page-top">
-    <?php $this->load->view("_partials/navbar_dsn.php") ?>
+    <?php $this->load->view("_partials/navbar_mhs.php") ?>
 
     <div id="wrapper">
     
-        <?php $this->load->view("_partials/sidebar_dsn.php") ?>
+        <?php $this->load->view("_partials/sidebar_mhs.php") ?>
 
         <div id="content-wrapper">
         <form method="get">
@@ -23,7 +23,7 @@
             <div class="container-fluid">
                 <!-- Breadcrumbs-->
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item">Perkuliahan</li>
+                    <li class="breadcrumb-item">Kelas</li>
                     <li class="breadcrumb-item">Jadwal</li>
                     <li class="breadcrumb-item"><?= $detail->matkul_nama ?>, <?= $detail->dosen_nama ?>, <?= $detail->pkl_hari ?> - <?= $detail->pkl_ruang ?>, <?= substr($detail->pkl_mulai,0,5) ?> - <?= substr($detail->pkl_selesai,0,5) ?></li>
                 </ol>
@@ -67,20 +67,24 @@
                                 else $bgcard = "";
                             ?>
                             <div class="card-body <?= $bgcard ?>">
-
-                                <a href="<?= site_url('dosen/editforum/'.$data->pjd_id) ?>" class="btn btn-<?= ($data->pjd_forumcreated==null)? "danger" : "info ".$data->pjd_forumcreated; ?>">
-                                    <small>
-                                        <i class="fas fa-comments"></i>
-                                        <?= ($data->pjd_forumcreated==null)? "Forum kosong" : "Forum terisi ".$data->pjd_forumcreated; ?>
-                                    </small>
-                                </a>
+                                
+                                <?php if($data->pjd_forumcreated!=null): ?>
+                                    <a href="<?= site_url('mahasiswa/forum/'.$data->pjd_id) ?>" class="btn btn-info">
+                                        <small>
+                                            <i class="fas fa-comments"></i>
+                                            Lihat forum
+                                        </small>
+                                    </a>
+                                <?php endif; ?>
                             
-                                <a href="<?= site_url('dosen/editmodul/'.$data->pjd_id) ?>" class="btn btn-<?= ($data->pjd_modulcreated==null)? "danger" : "info ".$data->pjd_modulcreated; ?>">
-                                    <small>
-                                        <i class="fas fa-file-pdf"></i>
-                                        <?= ($data->pjd_modulcreated==null)? "Modul kosong" : "Modul terisi ".$data->pjd_modulcreated; ?>
-                                    </small>
-                                </a>
+                                <?php if($data->pjd_modulcreated!=null): ?>
+                                    <a href="<?= site_url('upload/modul/'.$data->pjd_modulurl) ?>" class="btn btn-info">
+                                        <small>
+                                            <i class="fas fa-file-pdf"></i>
+                                            Lihat modul
+                                        </small>
+                                    </a>
+                                <?php endif; ?>
 
                             </div>
                         </div>

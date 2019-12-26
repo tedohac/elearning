@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Isi Forum - Penjadwalan</title>
+    <title>Reply Forum</title>
     <?php $this->load->view("_partials/head.php") ?>
 
     <!-- Jodit -->
@@ -15,10 +15,10 @@
 </head>
 
 <body id="page-top">
-    <?php $this->load->view("_partials/navbar_dsn.php") ?>
+    <?php $this->load->view("_partials/navbar_mhs.php") ?>
 
     <div id="wrapper">
-        <?php $this->load->view("_partials/sidebar_dsn.php") ?>
+        <?php $this->load->view("_partials/sidebar_mhs.php") ?>
 
         <div id="content-wrapper">
 
@@ -30,7 +30,7 @@
                     <li class="breadcrumb-item">Jadwal</li>
                     <li class="breadcrumb-item"><?= $detail->matkul_nama ?>, <?= $detail->dosen_nama ?>, <?= $detail->pkl_hari ?> - <?= $detail->pkl_ruang ?>, <?= substr($detail->pkl_mulai,0,5) ?> - <?= substr($detail->pkl_selesai,0,5) ?></li>
                     <li class="breadcrumb-item">Pertemuan ke-<?= $detail->pjd_pertemuan ?></li>
-                    <li class="breadcrumb-item">Isi Forum</li>
+                    <li class="breadcrumb-item">Reply Forum</li>
                 </ol>
 
                 <?php if ($this->session->flashdata('success')): ?>
@@ -44,20 +44,31 @@
                     <?php endif; ?>
 
 
-                    <div class="card mb-3">
+                    <div class="card mb-3 shadow">
                         <div class="card-header">
-                            <i class="fas fa-comments"></i>
-                            Forum Pertemuan ke-<?= $detail->pjd_pertemuan ?>
+                            Parent: 
+
+                            <small class="float-right"><b><?= $parent->name ?></b> - <?= $parent->created ?></small>
                         </div>
                         <div class="card-body">
+                            <?= htmlspecialchars_decode($parent->content) ?>
+                        </div>
+                    </div>
+
+                    <div class="card mb-3">
+                        <div class="card-body">
+                           
                             <form method="post">
                                 <!-- begin row -->
                                 <div class="row">
+                                    <div class="col-12 mb-3">
+                                        Reply Comment Above
+                                    </div>
                                     
                                     <div class="col-12 mb-3">
-                                        <textarea id="inputFollowUp" name="pjd_forumcontent"><?= htmlspecialchars_decode($detail->pjd_forumcontent) ?></textarea>
+                                        <textarea id="inputFollowUp" name="reply_content"></textarea>
                                         <div class="small text-danger">
-                                            <?= form_error('pjd_forumcontent') ?>
+                                            <?= form_error('reply_content') ?>
                                         </div>
                                     </div>
 

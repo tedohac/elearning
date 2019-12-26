@@ -22,7 +22,7 @@
             if($role=="adm")
                 $this->load->view("index_adm", $data);
             elseif($role=="mhs")
-                $this->load->view("index_mhs", $data);
+                redirect(site_url('mahasiswa'));
             elseif($role=="dsn")
                 redirect(site_url('dosen'));
         }

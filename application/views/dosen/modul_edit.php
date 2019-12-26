@@ -6,12 +6,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Isi Forum - Penjadwalan</title>
+    <title>Isi Modul - Penjadwalan</title>
     <?php $this->load->view("_partials/head.php") ?>
-
-    <!-- Jodit -->
-    <link href="<?= base_url('css/jodit.min.css'); ?>" rel="stylesheet">
-
 </head>
 
 <body id="page-top">
@@ -46,40 +42,43 @@
 
                     <div class="card mb-3">
                         <div class="card-header">
-                            <i class="fas fa-comments"></i>
-                            Forum Pertemuan ke-<?= $detail->pjd_pertemuan ?>
+                            <i class="fas fa-file-pdf"></i>
+                            Modul Pertemuan ke-<?= $detail->pjd_pertemuan ?>
                         </div>
                         <div class="card-body">
-                            <form method="post">
-                                <!-- begin row -->
-                                <div class="row">
-                                    
-                                    <div class="col-12 mb-3">
-                                        <textarea id="inputFollowUp" name="pjd_forumcontent"><?= htmlspecialchars_decode($detail->pjd_forumcontent) ?></textarea>
-                                        <div class="small text-danger">
-                                            <?= form_error('pjd_forumcontent') ?>
-                                        </div>
-                                    </div>
 
-                                    <div class="col-12">
-                                        <input type="button" class="btn btn-primary btn-block" value="Simpan" data-toggle="modal" data-target="#emailModal">
-                                    </div>
-                                    
+
+                        <form method="POST" enctype="multipart/form-data">
+
+                            <div class="row">
+                                <div class="col-12 mb-3 custom-file">
+                                    <input type="file" class="custom-file-input" id="customFile" name="pjd_modulurl">
+                                    <label class="custom-file-label" for="customFile">Choose file</label>
                                 </div>
+                                <div class="small text-danger">
+                                    <?= form_error('pjd_modulurl') ?>
+                                </div>
+                            
+                                <div class="col-12 mb-3 custom-file">
+                                    <input type="button" class="btn btn-primary btn-block" value="Simpan" data-toggle="modal" data-target="#emailModal">
+                                </div>
+                            </div>
 
-                                <div class="modal fade" id="emailModal">
+                            
+
+                            <div class="modal fade" id="emailModal">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
 
                                             <!-- Modal Header -->
                                             <div class="modal-header">
-                                                <h4 class="modal-title">Simpan Forum</h4>
+                                                <h4 class="modal-title">Simpan Modul</h4>
                                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                                             </div>
 
                                             <!-- Modal body -->
                                             <div class="modal-body">
-                                                Apakah anda yakin akan menyimpan forum?
+                                                Apakah anda yakin akan menyimpan modul?
                                             </div>
 
                                             <!-- Modal footer -->
@@ -92,7 +91,8 @@
                                     </div>
                                 </div>
 
-                            </form>
+                        </form> 
+
                         </div>
                     </div>
 
@@ -112,15 +112,12 @@
 
         <?php $this->load->view("_partials/endbody.php") ?>
 
-        <!-- Jodit-->
-        <script src="<?= base_url('js/jodit.min.js'); ?>"></script>
         <script>
-            var editor = new Jodit("#inputFollowUp", {
-                "buttons": "undo,redo,|,bold,underline,italic,|,superscript,subscript,|,ul,ol,|,outdent,indent,align,fontsize,|,image,link,|",
-                "buttonsMD": "undo,redo,|,bold,underline,italic,|,superscript,subscript,|,ul,ol,|,outdent,indent,align,fontsize,|,image,link,|",
-                "buttonsSM": "undo,redo,|,bold,underline,italic,|,superscript,subscript,|,ul,ol,|,outdent,indent,align,fontsize,|,image,link,|",
-                "buttonsXS": "undo,redo,|,bold,underline,italic,|,superscript,subscript,|,ul,ol,|,outdent,indent,align,fontsize,|,image,link,|",
-            })
+        // Add the following code if you want the name of the file appear on select
+        $(".custom-file-input").on("change", function() {
+        var fileName = $(this).val().split("\\").pop();
+        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
         </script>
 
     </body> 
