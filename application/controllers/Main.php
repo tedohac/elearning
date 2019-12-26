@@ -24,7 +24,7 @@
             elseif($role=="mhs")
                 $this->load->view("index_mhs", $data);
             elseif($role=="dsn")
-                redirect(site_url('main/dosen'));
+                redirect(site_url('dosen'));
         }
 
         public function dosen()

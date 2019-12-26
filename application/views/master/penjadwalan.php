@@ -55,6 +55,7 @@
                                     <th>ID Perkuliahan</th>
                                     <th>Tanggal Mulai</th>
                                     <th>Tanggal Selesai</th>
+                                    <th>Pertemuan</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
@@ -68,6 +69,7 @@
                                         <td><?= $data->pjd_pkl_id ?></td>
                                         <td><?= $data->pjd_tglmulai ?></td>
                                         <td><?= $data->pjd_tglselesai ?></td>
+                                        <td><?= $data->pjd_pertemuan ?></td>
                                         <td>
                                             
                                             <a class="trash-button btn btn-danger p-1 float-right ml-1" data-toggle="modal" data-target="#hapusModal" href="#" onclick="$('#delid').val('<?= $data->pjd_id ?>');"><i class="fas fa-trash-alt"></i></a>

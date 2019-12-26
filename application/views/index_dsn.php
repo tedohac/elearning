@@ -16,8 +16,7 @@
 
     <div id="wrapper">
 
-        <?php $this->load->view("_partials/sidebar_adm.php") ?>
-
+        <?php $this->load->view("_partials/sidebar_dsn.php") ?>
         <div id="content-wrapper">
             
             <div class="container-fluid">
@@ -47,10 +46,10 @@
                                             <?= $pkl->pkl_mulai ?> - <?= $pkl->pkl_selesai ?><br />
                                         </div>
                                     </div>
-                                    <a class="card-footer text-white clearfix small z-1" href="<?= site_url('mastermatkul') ?>">
-                                        <span class="float-left">Go to Page</span>
+                                    <a class="card-footer text-white clearfix small z-1" href="<?= site_url('dosen/penjadwalan/'.$pkl->pkl_id) ?>">
+                                        <span class="float-left">Jadwal</span>
                                         <span class="float-right">
-                                        <i class="fas fa-angle-right"></i>
+                                          <i class="fas fa-angle-right"></i>
                                         </span>
                                     </a>
                                 </div>

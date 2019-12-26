@@ -65,11 +65,25 @@
                             <div class="col-lg-3 col-md-6 mb-6 px-1">
                                 <small>Tanggal Mulai</small>
                                 <input type="date" name="pjd_tglmulai" id="pjd_tglmulai" class="form-control shadow-sm">
+                                <div class="small text-danger">
+                                    <?= form_error('pjd_tglmulai') ?>
+                                </div>
                             </div>
 
                             <div class="col-lg-3 col-md-6 mb-6 px-1">
                                 <small>Tanggal Selesai</small>
                                 <input type="date" name="pjd_tglselesai" id="pjd_tglselesai" class="form-control shadow-sm">
+                                <div class="small text-danger">
+                                    <?= form_error('pjd_tglselesai') ?>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-1 col-md-1 mb-6 px-1">
+                                <small>Pertemuan</small>
+                                <input type="text" name="pjd_pertemuan" id="pjd_pertemuan" class="form-control shadow-sm">
+                                <div class="small text-danger">
+                                    <?= form_error('pjd_pertemuan') ?>
+                                </div>
                             </div>
                             
                             <div class="col-12">
