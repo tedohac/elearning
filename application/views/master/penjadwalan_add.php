@@ -54,7 +54,7 @@
                         <div class="row">
                             
                             <div class="col-lg-3 col-md-6 mb-3 px-1">
-                                <small>Perkuliahan *</small>
+                                <small>ID Perkuliahan *</small>
                                 <select class="perkuliahanAutocom form-control shadow-sm" name="pjd_pkl_id">
                                 </select>
                                 <div class="small text-danger">
@@ -130,7 +130,7 @@
     <script src="<?= base_url('js/select2.min.js'); ?>"></script>
     <script type="text/javascript">
         $('.perkuliahanAutocom').select2({
-            placeholder: '-- Select Perkuliahan --',
+            placeholder: '-- Select ID Perkuliahan --',
             ajax: {
             url: '<?= site_url() ?>masterperkuliahan/autocom',
             dataType: 'json',
@@ -143,21 +143,6 @@
             cache: true
             }
         });
-        
-        /*$('.mahasiswaAutocom').select2({
-            placeholder: '-- Select Nama Mahasiswa --',
-            ajax: {
-            url: '<?= site_url() ?>mastermahasiswa/autocom',
-            dataType: 'json',
-            delay: 250,
-            processResults: function (data) {
-                return {
-                results: data
-                };
-            },
-            cache: true
-            }
-        });*/
         
     </script>
     

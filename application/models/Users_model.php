@@ -52,8 +52,10 @@
         function add($user_name, $role)
         {
             $data = $this->input->post();
-            $post_user['user_name'] = $user_name;
-            $post_user['user_password'] = crypt($data['mhs_password']);
+            $post_user['user_name'] = $user_name;            
+            $salt = bin2hex(openssl_random_pseudo_bytes(22));
+            
+            $post_user['user_password'] = crypt($data['password'], $salt);
             $post_user['user_role'] = $role;
             $post_user['user_status'] = "1";
             $this->db->insert($this->_table, $post_user);

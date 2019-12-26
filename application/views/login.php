@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>App Center - Login</title>
+    <title>E-Learning - Login</title>
     <?php $this->load->view("_partials/head.php") ?>
 
 </head>

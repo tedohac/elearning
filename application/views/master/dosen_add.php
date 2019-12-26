@@ -62,9 +62,9 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-12 mb-6 px-1 my-2">
                                 <small>Password</small>
-                                <input type="password" name="dosen_password" id="dosen_password" class="form-control shadow-sm">
+                                <input type="password" name="password" id="password" class="form-control shadow-sm">
                                 <div class="small text-danger">
-                                    <?= form_error('dosen_password') ?>
+                                    <?= form_error('password') ?>
                                 </div>
                             </div>
                         </div>

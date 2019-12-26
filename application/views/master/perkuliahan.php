@@ -51,6 +51,7 @@
                                 <thead class="thead-dark">
                                 <tr>
                                     <th width="20">No</th>
+                                    <th>ID</th>
                                     <th>Matkul</th>
                                     <th>Dosen</th>
                                     <th>Ruang</th>
@@ -67,6 +68,7 @@
                                     ?>
                                     <tr>
                                         <td><?= $nomor ?></td>
+                                        <td><?= $data->pkl_id ?></td>
                                         <td><?= $data->matkul_nama ?></td>
                                         <td><?= $data->dosen_nama ?></td>
                                         <td><?= $data->pkl_ruang ?></td>

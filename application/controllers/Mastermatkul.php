@@ -9,7 +9,7 @@ class Mastermatkul extends CI_Controller
         $this->load->model("users_model");
         $this->load->model("matkuls_model");
         
-        if($this->session->userdata('user_name')==null && $this->session->userdata('user_role')!="adm"){
+        if($this->session->userdata('user_name')==null || $this->session->userdata('user_role')!="adm"){
             redirect(site_url('login'));
             return;
         }
