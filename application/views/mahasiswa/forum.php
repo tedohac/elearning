@@ -60,7 +60,7 @@
                     
                         <div class="card mb-3 ml-3 shadow">
                             <div class="card-header">
-                                <b><?= $forum->reply_user_name ?></b> replied on <?= $forum->reply_created ?>
+                                <?= $forum->nama ?> <b>(<?= $forum->reply_user_name ?>)</b> replied on <?= $forum->reply_created ?>
                             </div>
                             <div class="card-body">
                                 <?= htmlspecialchars_decode($forum->reply_content) ?>
@@ -75,7 +75,7 @@
 
                             <div class="card mb-3 ml-5 shadow">
                                 <div class="card-header">
-                                    <b><?= $child->reply_user_name ?></b> replied on <?= $child->reply_created ?>
+                                    <?= $child->nama ?> <b>(<?= $child->reply_user_name ?>)</b> replied on <?= $child->reply_created ?>
                                 </div>
                                 <div class="card-body">
                                     <?= htmlspecialchars_decode($child->reply_content) ?>

@@ -46,7 +46,7 @@ class Mastermahasiswa extends CI_Controller
             }
             else
             {
-                if(!$this->users_model->add($post["mhs_nim"], "dsn"))
+                if(!$this->users_model->add($post["mhs_nim"], "mhs"))
                 {
                     $this->session->set_flashdata('error', 'Mahasiswa baru gagal ditambahkan sebagai user baru');
                     redirect(site_url('mastermahasiswa'));

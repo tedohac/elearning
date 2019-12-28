@@ -17,7 +17,11 @@
   
 
     <div class="card card-login mx-auto mt-5">
-      <div class="card-header">Login to Elearning</div>
+      <div class="card-header">
+        
+        <i class="fas fa-fw fa-book-reader"></i>
+        Login to Elearning
+      </div>
       <div class="card-body">
 
         <?php if ($this->session->flashdata('error')): ?>

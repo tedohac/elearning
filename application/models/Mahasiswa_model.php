@@ -41,6 +41,7 @@ class Mahasiswa_model extends CI_Model
     {
         $post = $this->input->post();
         $this->mhs_nim = $post["mhs_nim"];
+        $this->mhs_user_name = $post["mhs_nim"];
         $this->mhs_nama = $post["mhs_nama"];
         $this->mhs_tempat_lahir = $post["mhs_tempat_lahir"];
         $this->mhs_tanggal_lahir = $post["mhs_tanggal_lahir"];
@@ -62,7 +63,7 @@ class Mahasiswa_model extends CI_Model
     {
         $post = $this->input->post();
         $this->mhs_nim = $post["mhs_nim"];
-        $this->mhs_nama = $post["mhs_nama"];
+        $this->mhs_user_name = $post["mhs_nim"];
         $this->mhs_tempat_lahir = $post["mhs_tempat_lahir"];
         $this->mhs_tanggal_lahir = $post["mhs_tanggal_lahir"];
         $this->mhs_no_hp = $post["mhs_no_hp"];
@@ -83,5 +84,11 @@ class Mahasiswa_model extends CI_Model
     function checknim($mhs_nim)
     {
         return $this->db->where("mhs_nim", $mhs_nim)->count_all_results($this->_table);
+    }
+    
+    public function getnama($mhs_user_name)
+    {
+        $this->db->where(["mhs_user_name" => $mhs_user_name]);
+        return $this->db->get($this->_table)->row();
     }
 }

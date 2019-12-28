@@ -69,8 +69,8 @@
         public function getbydosen($pkl_dosen_nik)
         {
             $this->db->from("ms_perkuliahan pkl join ms_matkul m on(pkl.pkl_matkul_id=m.matkul_id) join ms_dosen d on(pkl.pkl_dosen_nik=d.dosen_nik)");
-            $this->db->where(["pkl.pkl_dosen_nik" => $pkl_dosen_nik]);
-            return $this->db->get($this->_table)->result();
+            $this->db->where(["pkl_dosen_nik" => $pkl_dosen_nik]);
+            return $this->db->get()->result();
         }
         
         public function update($id)

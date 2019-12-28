@@ -62,6 +62,12 @@
             $this->db->where(["dosen_nik" => $id]);
             return $this->db->get()->row();
         }
+
+        public function getnama($dosen_user_name)
+        {
+            $this->db->where(["dosen_user_name" => $dosen_user_name]);
+            return $this->db->get($this->_table)->row();
+        }
         
         public function update($id)
         {

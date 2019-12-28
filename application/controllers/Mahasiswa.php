@@ -10,6 +10,7 @@
             parent::__construct();
             $this->load->model("users_model");
             $this->load->model("dosens_model");
+            $this->load->model("mahasiswa_model");
             
             if($this->session->userdata('user_name')==null || $this->session->userdata('user_role')!="mhs"){
                 redirect(site_url('login'));
@@ -52,6 +53,23 @@
             foreach($data['forums'] as $forum)
             {
                 $forum->child = $this->replyforum_model->getchild($forum->reply_id);
+
+                if(substr($forum->reply_user_name,0,2)=="DS")
+                    $forum->nama = $this->dosens_model->getnama($forum->reply_user_name)->dosen_nama;
+                elseif(substr($forum->reply_user_name,0,3)=="MHS")
+                    $forum->nama = $this->mahasiswa_model->getnama($forum->reply_user_name)->mhs_nama;
+                else
+                    $forum->nama = "";
+
+                foreach($forum->child as $child)
+                {
+                    if(substr($child->reply_user_name,0,2)=="DS")
+                        $child->nama = $this->dosens_model->getnama($child->reply_user_name)->dosen_nama;
+                    elseif(substr($child->reply_user_name,0,3)=="MHS")
+                        $child->nama = $this->mahasiswa_model->getnama($child->reply_user_name)->mhs_nama;
+                    else
+                        $child->nama = "";
+                }
             }
 
             $this->load->view("mahasiswa/forum", $data);
